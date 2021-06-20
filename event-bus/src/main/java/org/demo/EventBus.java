@@ -2,6 +2,7 @@ package org.demo;
 
 import java.lang.reflect.Member;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -50,7 +51,7 @@ public class EventBus implements Bus {
                 Arrays.stream(declaredMethods)
                         .filter(m -> m.isAnnotationPresent(Subscribe.class)
                                 && m.getParameterCount() == 1
-                                && m.getModifiers() == Member.PUBLIC)
+                                && m.getModifiers() == Modifier.PUBLIC)
                         .forEach(methods::add);
                 temp = temp.getSuperclass();
             }
